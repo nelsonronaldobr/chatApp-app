@@ -138,7 +138,7 @@ export const HeaderSidebar = () => {
                                 <PopoverTrigger asChild>
                                     <Avatar>
                                         <AvatarImage
-                                            src='https://github.com/shadcn.png'
+                                            src={`${dataProfile?.profile.avatar}`}
                                             alt='@shadcn'
                                             className='w-10 h-10 object-cover rounded-full'
                                         />
@@ -151,7 +151,9 @@ export const HeaderSidebar = () => {
                                     <div className='flex gap-2 flex-col'>
                                         <div className='flex justify-between space-x-4'>
                                             <Avatar>
-                                                <AvatarImage src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5y_WJqreAirIdtrQO0LlzIVFhlNVJ95gybg&usqp=CAU' />
+                                                <AvatarImage
+                                                    src={`${dataProfile?.profile.avatar}`}
+                                                />
                                                 <AvatarFallback asChild>
                                                     <Skeleton className='w-10 h-10 rounded-full' />
                                                 </AvatarFallback>

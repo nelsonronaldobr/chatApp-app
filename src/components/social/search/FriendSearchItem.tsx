@@ -65,7 +65,7 @@ export const FriendSearchItem: FC<Props> = ({ user }) => {
                 <div className='flex flex-grow items-center'>
                     <Avatar>
                         <AvatarImage
-                            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5y_WJqreAirIdtrQO0LlzIVFhlNVJ95gybg&usqp=CAU'
+                            src={`${user.avatar}`}
                             alt='@shadcn'
                             className='w-10 h-10 object-cover rounded-full'
                         />
@@ -86,7 +86,7 @@ export const FriendSearchItem: FC<Props> = ({ user }) => {
                         <HoverCardContent className='w-80'>
                             <div className='flex justify-between space-x-4'>
                                 <Avatar>
-                                    <AvatarImage src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5y_WJqreAirIdtrQO0LlzIVFhlNVJ95gybg&usqp=CAU' />
+                                    <AvatarImage src={`${user.avatar}`} />
                                     <AvatarFallback>VC</AvatarFallback>
                                 </Avatar>
                                 <div className='space-y-1'>

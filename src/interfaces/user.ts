@@ -8,6 +8,7 @@ export interface User {
     password: string;
     email: string;
     bio: string;
+    avatar: string;
     friendRequest: {
         exists: boolean;
         id: string | null;

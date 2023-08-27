@@ -38,7 +38,7 @@ export const HeaderConversation: FC<Props> = ({ otherUser }) => {
                                 className='hover:no-underline text-card p-0 flex gap-4'>
                                 <Avatar>
                                     <AvatarImage
-                                        src='https://github.com/shadcn.png'
+                                        src={`${otherUser?.avatar}`}
                                         alt='@shadcn'
                                         className='w-10 h-10 object-cover rounded-full'
                                     />
@@ -54,7 +54,7 @@ export const HeaderConversation: FC<Props> = ({ otherUser }) => {
                         <PopoverContent className='w-80'>
                             <div className='flex justify-between space-x-4'>
                                 <Avatar>
-                                    <AvatarImage src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5y_WJqreAirIdtrQO0LlzIVFhlNVJ95gybg&usqp=CAU' />
+                                    <AvatarImage src={`${otherUser?.avatar}`} />
                                     <AvatarFallback asChild>
                                         <Skeleton className='w-10 h-10 rounded-full' />
                                     </AvatarFallback>

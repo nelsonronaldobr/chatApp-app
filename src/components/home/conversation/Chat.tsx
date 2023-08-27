@@ -62,7 +62,7 @@ export const Chat: FC<Props> = ({ conversation }) => {
                         <div className='flex px-4 items-center'>
                             <Avatar className='flex items-center'>
                                 <AvatarImage
-                                    src={'https://github.com/shadcn.png'}
+                                    src={`${otherUser?.avatar}`}
                                     alt='@shadcn'
                                     className='w-14 h-14 object-cover rounded-full'
                                 />
