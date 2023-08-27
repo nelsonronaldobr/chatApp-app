@@ -139,7 +139,7 @@ export const HeaderSidebar = () => {
                                     <Avatar>
                                         <AvatarImage
                                             src={`${dataProfile?.profile.avatar}`}
-                                            alt='@shadcn'
+                                            alt={`${dataProfile?.profile.username}`}
                                             className='w-10 h-10 object-cover rounded-full'
                                         />
                                         <AvatarFallback asChild>
@@ -153,6 +153,8 @@ export const HeaderSidebar = () => {
                                             <Avatar>
                                                 <AvatarImage
                                                     src={`${dataProfile?.profile.avatar}`}
+                                                    alt={`${dataProfile?.profile.username}`}
+                                                    className='w-10 h-10 object-cover rounded-full'
                                                 />
                                                 <AvatarFallback asChild>
                                                     <Skeleton className='w-10 h-10 rounded-full' />

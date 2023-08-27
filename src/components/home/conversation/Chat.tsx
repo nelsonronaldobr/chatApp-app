@@ -63,7 +63,7 @@ export const Chat: FC<Props> = ({ conversation }) => {
                             <Avatar className='flex items-center'>
                                 <AvatarImage
                                     src={`${otherUser?.avatar}`}
-                                    alt='@shadcn'
+                                    alt={`${otherUser?.username}`}
                                     className='w-14 h-14 object-cover rounded-full'
                                 />
                                 <AvatarFallback className='w-14 h-14 object-cover rounded-full'>

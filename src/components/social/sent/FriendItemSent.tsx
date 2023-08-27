@@ -32,7 +32,7 @@ export const FriendItemSent: FC<Props> = ({ receiver, status }) => {
                     <Avatar>
                         <AvatarImage
                             src={`${receiver.avatar}`}
-                            alt='@shadcn'
+                            alt={`${receiver.username}`}
                             className='w-10 h-10 object-cover rounded-full'
                         />
                         <AvatarFallback asChild>
@@ -52,7 +52,11 @@ export const FriendItemSent: FC<Props> = ({ receiver, status }) => {
                         <HoverCardContent className='w-80'>
                             <div className='flex justify-between space-x-4'>
                                 <Avatar>
-                                    <AvatarImage src={`${receiver.avatar}`} />
+                                    <AvatarImage
+                                        src={`${receiver.avatar}`}
+                                        alt={`${receiver.username}`}
+                                        className='w-10 h-10 object-cover rounded-full'
+                                    />
                                     <AvatarFallback>VC</AvatarFallback>
                                 </Avatar>
                                 <div className='space-y-1'>

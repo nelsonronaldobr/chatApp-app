@@ -66,7 +66,7 @@ export const FriendSearchItem: FC<Props> = ({ user }) => {
                     <Avatar>
                         <AvatarImage
                             src={`${user.avatar}`}
-                            alt='@shadcn'
+                            alt={`${user.username}`}
                             className='w-10 h-10 object-cover rounded-full'
                         />
                         <AvatarFallback asChild>
@@ -86,8 +86,14 @@ export const FriendSearchItem: FC<Props> = ({ user }) => {
                         <HoverCardContent className='w-80'>
                             <div className='flex justify-between space-x-4'>
                                 <Avatar>
-                                    <AvatarImage src={`${user.avatar}`} />
-                                    <AvatarFallback>VC</AvatarFallback>
+                                    <AvatarImage
+                                        src={`${user?.avatar}`}
+                                        alt={`${user.username}`}
+                                        className='w-10 h-10 object-cover rounded-full'
+                                    />
+                                    <AvatarFallback asChild>
+                                        <Skeleton className='w-10 h-10 rounded-full' />
+                                    </AvatarFallback>
                                 </Avatar>
                                 <div className='space-y-1'>
                                     <h4 className='text-sm font-semibold'>

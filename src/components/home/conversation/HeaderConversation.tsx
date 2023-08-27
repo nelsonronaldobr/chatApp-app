@@ -39,7 +39,7 @@ export const HeaderConversation: FC<Props> = ({ otherUser }) => {
                                 <Avatar>
                                     <AvatarImage
                                         src={`${otherUser?.avatar}`}
-                                        alt='@shadcn'
+                                        alt={`${otherUser?.username}`}
                                         className='w-10 h-10 object-cover rounded-full'
                                     />
                                     <AvatarFallback asChild>
@@ -54,7 +54,11 @@ export const HeaderConversation: FC<Props> = ({ otherUser }) => {
                         <PopoverContent className='w-80'>
                             <div className='flex justify-between space-x-4'>
                                 <Avatar>
-                                    <AvatarImage src={`${otherUser?.avatar}`} />
+                                    <AvatarImage
+                                        src={`${otherUser?.avatar}`}
+                                        alt={`${otherUser?.username}`}
+                                        className='w-10 h-10 object-cover rounded-full'
+                                    />
                                     <AvatarFallback asChild>
                                         <Skeleton className='w-10 h-10 rounded-full' />
                                     </AvatarFallback>

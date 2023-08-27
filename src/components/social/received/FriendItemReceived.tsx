@@ -45,8 +45,8 @@ export const FriendItemReceived: FC<Props> = ({ sender, requestId }) => {
                 <div className='flex flex-grow items-center'>
                     <Avatar>
                         <AvatarImage
-                            src={`${sender.avatar}`}
-                            alt='@shadcn'
+                            src={`${sender?.avatar}`}
+                            alt={`${sender?.username}`}
                             className='w-10 h-10 object-cover rounded-full'
                         />
                         <AvatarFallback asChild>
@@ -66,7 +66,11 @@ export const FriendItemReceived: FC<Props> = ({ sender, requestId }) => {
                         <HoverCardContent className='w-80'>
                             <div className='flex justify-between space-x-4'>
                                 <Avatar>
-                                    <AvatarImage src={`${sender.avatar}`} />
+                                    <AvatarImage
+                                        src={`${sender?.avatar}`}
+                                        alt={`${sender?.username}`}
+                                        className='w-10 h-10 object-cover rounded-full'
+                                    />
                                     <AvatarFallback asChild>
                                         <Skeleton className='w-10 h-10 rounded-full' />
                                     </AvatarFallback>

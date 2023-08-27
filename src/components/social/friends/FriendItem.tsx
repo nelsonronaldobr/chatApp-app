@@ -37,7 +37,7 @@ export const FriendItem: FC<Props> = ({ friend, friendRequest }) => {
                     <Avatar>
                         <AvatarImage
                             src={`${friend.avatar}`}
-                            alt='@shadcn'
+                            alt={`${friend.username}`}
                             className='w-10 h-10 object-cover rounded-full'
                         />
                         <AvatarFallback asChild>
@@ -57,7 +57,11 @@ export const FriendItem: FC<Props> = ({ friend, friendRequest }) => {
                         <HoverCardContent className='w-80'>
                             <div className='flex justify-between space-x-4'>
                                 <Avatar>
-                                    <AvatarImage src={`${friend.avatar}`} />
+                                    <AvatarImage
+                                        src={`${friend.avatar}`}
+                                        alt={`${friend.username}`}
+                                        className='w-10 h-10 object-cover rounded-full'
+                                    />
                                     <AvatarFallback asChild>
                                         <Skeleton className='w-10 h-10 rounded-full' />
                                     </AvatarFallback>
