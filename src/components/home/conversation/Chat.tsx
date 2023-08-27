@@ -11,6 +11,7 @@ import {
     TooltipProvider,
     TooltipTrigger
 } from '@/components/ui/tooltip';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface Props {
     conversation: Conversation;
@@ -66,8 +67,8 @@ export const Chat: FC<Props> = ({ conversation }) => {
                                     alt={`${otherUser?.username}`}
                                     className='w-14 h-14 object-cover rounded-full'
                                 />
-                                <AvatarFallback className='w-14 h-14 object-cover rounded-full'>
-                                    CN
+                                <AvatarFallback asChild>
+                                    <Skeleton className='w-14 h-14 object-cover rounded-full' />
                                 </AvatarFallback>
                             </Avatar>
                         </div>
