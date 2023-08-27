@@ -1,7 +1,5 @@
 import { getSocket } from '@/helpers';
-import { useAppDispatch } from '@/store';
 import {
-    conversationApi,
     useCreateSendStartMessageMutation,
     useGetConversationByIdQuery,
     useGetConversationsLastMessageQuery
