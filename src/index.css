@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+  .border-separator {
+    border-color:
+      #374045;
+  }
+
+  .border-list {
+    border-color: #8797a126;
+  }
+
+  .bg-header-footer {
+    background-color: #202c33;
+  }
+
+  .bg-conversation { 
+    background-image: url(/src/assets/bg-chat.png);
+    background-repeat: repeat;
+    opacity: 0.06;
+  }
+
+  .bg-message-second {
+    background-color: #202c33;
+  }
+
+  .bg-message-first {
+    background-color: #005c4b;
+  }
+
+  .text-primary {
+    color: #d1d7db;
+  }
+
+  .overflow-y-scroll::-webkit-scrollbar {
+    width: 0.39rem;
+    background-color: transparent;
+  }
+
+  .overflow-y-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(85, 85, 85, 0.5);
+  }
+
+}
