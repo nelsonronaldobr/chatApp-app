@@ -71,6 +71,12 @@ export const HeaderSidebar = () => {
         logout();
     };
 
+    const onClick = (receiver: string) => {
+        handleSendStartMessage({
+            receiver
+        });
+    };
+
     useKeyAction('f', toggleOpen);
     useKeyAction('q', onLogout);
 
@@ -113,9 +119,7 @@ export const HeaderSidebar = () => {
                                                 disabled={isLoadingCreate}
                                                 size={'sm'}
                                                 onClick={() =>
-                                                    handleSendStartMessage({
-                                                        receiver: friend._id
-                                                    })
+                                                    onClick(friend._id)
                                                 }>
                                                 <span>Saludar</span>
                                             </Button>
@@ -164,11 +168,8 @@ export const HeaderSidebar = () => {
                                                 <h4 className='text-sm font-semibold'>
                                                     {dataProfile!.profile.email}
                                                 </h4>
-                                                <p className='text-sm'>
-                                                    {dataProfile!.profile.bio
-                                                        ? dataProfile!.profile
-                                                              .bio
-                                                        : 'No hay Descripción.'}
+                                                <p className='text-sm break-all'>
+                                                    {dataProfile?.profile.bio}
                                                 </p>
                                                 <div className='flex items-center pt-2'>
                                                     <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{' '}

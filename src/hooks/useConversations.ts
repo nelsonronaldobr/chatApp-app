@@ -25,7 +25,6 @@ export const useGetConversationById = (conversationId: string) => {
 
 export const useConversationsActions = () => {
     const { user } = useAuthStore();
-    const dispatch = useAppDispatch();
 
     const [create, { isLoading: isLoadingCreate }] =
         useCreateSendStartMessageMutation();
@@ -60,7 +59,6 @@ export const useConversationsActions = () => {
         content: string;
     }) => {
         socket.emit('sendMessage', { sender: user!._id, receiver, content });
-        dispatch(conversationApi.util.invalidateTags(['Conversations']));
     };
 
     return {

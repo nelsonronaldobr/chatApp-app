@@ -1,8 +1,8 @@
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
-import { UserAuthForm } from '../components';
 import { Fragment } from 'react';
+import { UserAuthForm } from '@/components/auth/form';
 
 export const LoginPage = () => {
     return (
@@ -10,7 +10,7 @@ export const LoginPage = () => {
             <Link
                 to='/auth/register'
                 className={cn(
-                    buttonVariants({ variant: 'ghost' }),
+                    buttonVariants({ variant: 'secondary' }),
                     'absolute right-4 top-4 md:right-8 md:top-8'
                 )}>
                 Register

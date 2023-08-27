@@ -99,10 +99,8 @@ export const FriendSearchItem: FC<Props> = ({ user }) => {
                                     <h4 className='text-sm font-semibold'>
                                         {user.email}
                                     </h4>
-                                    <p className='text-sm'>
-                                        {user.bio
-                                            ? user.bio
-                                            : 'The React Framework – created and maintained by @vercel.'}
+                                    <p className='text-sm break-all'>
+                                        {user.bio}
                                     </p>
                                     <div className='flex items-center pt-2'>
                                         <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{' '}

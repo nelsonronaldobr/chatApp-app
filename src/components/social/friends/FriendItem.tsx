@@ -70,10 +70,8 @@ export const FriendItem: FC<Props> = ({ friend, friendRequest }) => {
                                     <h4 className='text-sm font-semibold'>
                                         {friend.email}
                                     </h4>
-                                    <p className='text-sm'>
-                                        {friend.bio
-                                            ? friend.bio
-                                            : 'The React Framework – created and maintained by @vercel.'}
+                                    <p className='text-sm break-all'>
+                                        {friend.bio}
                                     </p>
                                     <div className='flex items-center pt-2'>
                                         <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{' '}

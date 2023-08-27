@@ -13,6 +13,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Github, Loader2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger
+} from '@/components/ui/tooltip';
 
 export const UserRegisterForm = () => {
     const { register, isLoading } = useAuthStore();
@@ -43,6 +49,7 @@ export const UserRegisterForm = () => {
 
     const onSubmit = (values: z.infer<typeof registerSchema>) => {
         register(values);
+        form.reset();
     };
 
     return (
@@ -54,24 +61,33 @@ export const UserRegisterForm = () => {
                             <FormField
                                 name='name'
                                 control={form.control}
-                                render={({ field }) => (
-                                    <FormItem className='relative'>
+                                render={({ field, fieldState }) => (
+                                    <FormItem>
                                         <FormLabel
                                             className='text-sm'
                                             htmlFor='name'>
                                             Name
                                         </FormLabel>
                                         <FormControl>
-                                            <Input
-                                                {...field}
-                                                placeholder='Nelson Barrera'
-                                                autoCapitalize='none'
-                                                autoComplete='name'
-                                                id='name'
-                                                autoCorrect='off'
-                                            />
+                                            <TooltipProvider>
+                                                <Tooltip
+                                                    open={fieldState.invalid}>
+                                                    <TooltipTrigger asChild>
+                                                        <Input
+                                                            {...field}
+                                                            placeholder='Nelson Barrera'
+                                                            autoCapitalize='none'
+                                                            autoComplete='name'
+                                                            id='name'
+                                                            autoCorrect='off'
+                                                        />
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <FormMessage className='text-xs' />
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                            </TooltipProvider>
                                         </FormControl>
-                                        <FormMessage className='text-xs absolute right-0' />
                                     </FormItem>
                                 )}
                             />
@@ -80,7 +96,7 @@ export const UserRegisterForm = () => {
                             <FormField
                                 name='email'
                                 control={form.control}
-                                render={({ field }) => (
+                                render={({ field, fieldState }) => (
                                     <FormItem className='relative'>
                                         <FormLabel
                                             className='text-sm'
@@ -88,17 +104,26 @@ export const UserRegisterForm = () => {
                                             Correo Electrónico
                                         </FormLabel>
                                         <FormControl>
-                                            <Input
-                                                {...field}
-                                                placeholder='name@example.com'
-                                                type='email'
-                                                id='email'
-                                                autoCapitalize='none'
-                                                autoComplete='email'
-                                                autoCorrect='off'
-                                            />
+                                            <TooltipProvider>
+                                                <Tooltip
+                                                    open={fieldState.invalid}>
+                                                    <TooltipTrigger asChild>
+                                                        <Input
+                                                            {...field}
+                                                            placeholder='name@example.com'
+                                                            type='email'
+                                                            id='email'
+                                                            autoCapitalize='none'
+                                                            autoComplete='email'
+                                                            autoCorrect='off'
+                                                        />
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <FormMessage className='text-xs' />
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                            </TooltipProvider>
                                         </FormControl>
-                                        <FormMessage className='text-xs absolute right-0' />
                                     </FormItem>
                                 )}
                             />
@@ -107,7 +132,7 @@ export const UserRegisterForm = () => {
                             <FormField
                                 name='password'
                                 control={form.control}
-                                render={({ field }) => (
+                                render={({ field, fieldState }) => (
                                     <FormItem className='relative'>
                                         <FormLabel
                                             className='text-sm'
@@ -115,17 +140,26 @@ export const UserRegisterForm = () => {
                                             Password
                                         </FormLabel>
                                         <FormControl>
-                                            <Input
-                                                {...field}
-                                                placeholder='*********'
-                                                type='password'
-                                                autoCapitalize='none'
-                                                autoComplete='password'
-                                                id='password'
-                                                autoCorrect='off'
-                                            />
+                                            <TooltipProvider>
+                                                <Tooltip
+                                                    open={fieldState.invalid}>
+                                                    <TooltipTrigger asChild>
+                                                        <Input
+                                                            {...field}
+                                                            placeholder='*********'
+                                                            type='password'
+                                                            autoCapitalize='none'
+                                                            autoComplete='password'
+                                                            id='password'
+                                                            autoCorrect='off'
+                                                        />
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <FormMessage className='text-xs' />
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                            </TooltipProvider>
                                         </FormControl>
-                                        <FormMessage className='text-xs absolute right-0' />
                                     </FormItem>
                                 )}
                             />

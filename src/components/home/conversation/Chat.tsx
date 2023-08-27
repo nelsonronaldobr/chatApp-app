@@ -49,6 +49,7 @@ const MessageContent: FC<{ message: Message; currentUser: User | null }> = ({
 export const Chat: FC<Props> = ({ conversation }) => {
     const { user } = useAuthStore();
     const { lastMessage, participants } = conversation;
+
     const otherUser = participants.find(
         (participant) => participant._id !== user?._id
     );

@@ -12,7 +12,6 @@ export const authSlice = createSlice({
     reducers: {
         loginStart(state) {
             state.isLoading = true;
-            state.sessionStatus = 'checking';
         },
         loginError(state) {
             state.isLoading = false;

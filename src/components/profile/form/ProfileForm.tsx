@@ -76,7 +76,7 @@ export const ProfileForm: FC<Props> = ({ profile }) => {
                             name='name'
                             control={form.control}
                             render={({ field, fieldState }) => (
-                                <FormItem className='relative'>
+                                <FormItem>
                                     <FormLabel
                                         htmlFor='name'
                                         className='text-sm'>

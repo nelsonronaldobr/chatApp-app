@@ -79,10 +79,8 @@ export const FriendItemReceived: FC<Props> = ({ sender, requestId }) => {
                                     <h4 className='text-sm font-semibold'>
                                         {sender.email}
                                     </h4>
-                                    <p className='text-sm'>
-                                        {sender.bio
-                                            ? sender.bio
-                                            : 'The React Framework – created and maintained by @vercel.'}
+                                    <p className='text-sm break-all'>
+                                        {sender.bio}
                                     </p>
                                     <div className='flex items-center pt-2'>
                                         <CalendarIcon className='mr-2 h-4 w-4 opacity-70' />{' '}
