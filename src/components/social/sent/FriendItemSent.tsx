@@ -23,7 +23,6 @@ interface Props {
     receiver: User;
     status: FriendRequestStatus;
 }
-/* :( */
 
 export const FriendItemSent: FC<Props> = ({ receiver, status }) => {
     return (
