@@ -33,6 +33,7 @@ export const conversationApi = createApi({
             }),
             providesTags: ['Conversations'],
             async onCacheEntryAdded(
+                // @ts-expect-error: 'params' is declared but its value is never read.
                 params,
                 { cacheDataLoaded, cacheEntryRemoved, updateCachedData }
             ) {
@@ -80,8 +81,7 @@ export const conversationApi = createApi({
                     socket.on(
                         'newMessage',
                         ({
-                            newConversation,
-                            newMessage
+                            newConversation
                         }: {
                             newConversation: Conversation;
                             newMessage: Message;
@@ -143,7 +143,6 @@ export const conversationApi = createApi({
                     socket.on(
                         'newMessage',
                         ({
-                            newConversation,
                             newMessage
                         }: {
                             newConversation: Conversation;

@@ -1,5 +1,5 @@
 import { checkIfUsernameIsValid } from '@/helpers';
-import { useAuthStore, useProfileMutations } from '@/hooks';
+import { useProfileMutations } from '@/hooks';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {

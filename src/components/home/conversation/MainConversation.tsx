@@ -20,7 +20,7 @@ interface Props {
     otherUser: User;
 }
 
-export const MainConversation: FC<Props> = ({ messages, otherUser }) => {
+export const MainConversation: FC<Props> = ({ messages }) => {
     const { user } = useAuthStore();
     const messageRef = useRef<HTMLDivElement>(null);
 

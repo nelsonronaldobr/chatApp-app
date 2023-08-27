@@ -8,7 +8,7 @@ import { Navigate } from 'react-router-dom';
 
 export const ProfilePage = () => {
     const { user } = useAuthStore();
-    const { data, isLoading, isFetching, isError } = useGetProfileById({
+    const { data, isLoading, isError } = useGetProfileById({
         userId: user!._id
     });
 

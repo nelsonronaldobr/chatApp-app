@@ -18,7 +18,7 @@ interface Props {
     conversation: Conversation;
 }
 
-export const FooterConversation: FC<Props> = ({ conversation, otherUser }) => {
+export const FooterConversation: FC<Props> = ({ otherUser }) => {
     const [message, setMessage] = useState('');
     const [open, setOpen] = useState(false);
     const { handleSendMessage } = useConversationsActions();

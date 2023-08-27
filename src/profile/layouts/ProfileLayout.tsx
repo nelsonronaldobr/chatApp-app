@@ -1,6 +1,5 @@
 import { Sidebar } from '@/components/profile/sidebar';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Cog, Contact, Home, Settings2, Unlock } from 'lucide-react';
+import { Cog, Contact, Home } from 'lucide-react';
 import { Outlet } from 'react-router-dom';
 
 export interface NavbarLinks {
