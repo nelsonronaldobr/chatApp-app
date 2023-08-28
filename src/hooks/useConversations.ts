@@ -1,6 +1,5 @@
 import { getSocket } from '@/helpers';
 import {
-    useCreateSendStartMessageMutation,
     useGetConversationByIdQuery,
     useGetConversationsLastMessageQuery
 } from '@/store/apis';
@@ -24,9 +23,6 @@ export const useGetConversationById = (conversationId: string) => {
 export const useConversationsActions = () => {
     const { user } = useAuthStore();
 
-    const [create, { isLoading: isLoadingCreate }] =
-        useCreateSendStartMessageMutation();
-
     const handleSendStartMessage = async ({
         receiver
     }: {
@@ -34,14 +30,8 @@ export const useConversationsActions = () => {
     }) => {
         // Emitir el mensaje a la sala de la conversación
         try {
-            const {
-                data: { conversation }
-            } = await create({
-                receiverId: receiver
-            }).unwrap();
-
             socket.emit('sendStartConversation', {
-                conversation,
+                sender: user!._id,
                 receiver
             });
         } catch (error) {
@@ -61,28 +51,6 @@ export const useConversationsActions = () => {
 
     return {
         handleSendStartMessage,
-        handleSendMessage,
-        isLoadingCreate
+        handleSendMessage
     };
 };
-
-/* const handleSendStartMessage = async ({
-    receiver
-}: {
-    receiver: string;
-}) => {
-    // Emitir el mensaje a la sala de la conversación
-    try {
-        const {
-            data: { conversation }
-        } = await create({
-            receiverId: receiver
-        }).unwrap();
-        socket.emit('sendStartConversation', {
-            conversation,
-            receiver
-        });
-    } catch (error) {
-        console.log(error);
-    }
-}; */
