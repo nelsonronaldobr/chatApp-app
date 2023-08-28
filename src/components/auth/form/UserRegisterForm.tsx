@@ -10,7 +10,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { useAuthStore } from '@/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Github, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import {
@@ -176,7 +176,7 @@ export const UserRegisterForm = () => {
                     </div>
                 </form>
             </Form>
-            <div className='relative'>
+            {/* <div className='relative'>
                 <div className='absolute inset-0 flex items-center'>
                     <span className='w-full border-t' />
                 </div>
@@ -193,7 +193,7 @@ export const UserRegisterForm = () => {
                     <Github className='mr-2 h-4 w-4' />
                 )}
                 Github
-            </Button>
+            </Button> */}
         </div>
     );
 };
