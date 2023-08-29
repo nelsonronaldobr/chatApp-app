@@ -43,68 +43,39 @@ export const conversationApi = createApi({
                     const socket = getSocket();
 
                     socket.on(
-                        'newConversationNotification',
-                        (newConversation: Conversation) => {
-                            updateCachedData((draft) => {
-                                const conversations = draft.data.conversations;
-
-                                const existingConversationIndex =
-                                    conversations.findIndex(
-                                        (conversation) =>
-                                            conversation._id ===
-                                            newConversation._id
-                                    );
-
-                                if (existingConversationIndex !== -1) {
-                                    // Si ya existe la conversación, actualizamos
-                                    conversations[existingConversationIndex] =
-                                        newConversation;
-                                } else {
-                                    // Si no existe, añadimos la nueva conversación
-                                    conversations.unshift(newConversation);
-                                }
-                                // Ordenar las conversaciones por fecha de creación (más reciente primero)
-                                // Ordenar las conversaciones por fecha de creación del último mensaje (más reciente primero)
-                                conversations.sort(
-                                    (a, b) =>
-                                        new Date(
-                                            b.lastMessage.createdAt
-                                        ).getTime() -
-                                        new Date(
-                                            a.lastMessage.createdAt
-                                        ).getTime()
-                                );
-                            });
-                        }
-                    );
-
-                    socket.on(
                         'newMessage',
                         ({
+                            newMessage,
                             newConversation
                         }: {
-                            newConversation: Conversation;
                             newMessage: Message;
+                            newConversation: Conversation;
                         }) => {
                             updateCachedData((draft) => {
                                 const conversations = draft.data.conversations;
 
-                                const existingConversationIndex =
-                                    conversations.findIndex(
-                                        (conversation) =>
-                                            conversation._id ===
-                                            newConversation._id
-                                    );
+                                if (newConversation == undefined) {
+                                    // Si newConversation está vacío, actualiza el lastMessage en la conversación existente
+                                    const existingConversationIndex =
+                                        conversations.findIndex(
+                                            (conversation) =>
+                                                conversation._id ===
+                                                newMessage.conversation
+                                        );
 
-                                if (existingConversationIndex !== -1) {
-                                    // Si ya existe la conversación, actualizamos
-                                    conversations[existingConversationIndex] =
-                                        newConversation;
+                                    if (existingConversationIndex !== -1) {
+                                        const existingConversation =
+                                            conversations[
+                                                existingConversationIndex
+                                            ];
+                                        existingConversation.lastMessage =
+                                            newMessage;
+                                    }
                                 } else {
-                                    // Si no existe, añadimos la nueva conversación
+                                    // Si newConversation tiene contenido, agrégalo a las conversaciones
                                     conversations.unshift(newConversation);
                                 }
-                                // Ordenar las conversaciones por fecha de creación (más reciente primero)
+
                                 // Ordenar las conversaciones por fecha de creación del último mensaje (más reciente primero)
                                 conversations.sort(
                                     (a, b) =>
@@ -142,37 +113,20 @@ export const conversationApi = createApi({
 
                     socket.on(
                         'newMessage',
-                        ({
-                            newMessage
-                        }: {
-                            newConversation: Conversation;
-                            newMessage: Message;
-                        }) => {
+                        ({ newMessage }: { newMessage: Message }) => {
                             if (
                                 params.conversationId ===
                                 newMessage.conversation
                             ) {
                                 updateCachedData((draft) => {
-                                    const messages =
-                                        draft.data.conversation.messages;
+                                    const conversation =
+                                        draft.data.conversation;
 
-                                    const existingMessageIndex =
-                                        messages.findIndex(
-                                            (message) =>
-                                                message._id === newMessage._id
-                                        );
+                                    // Agregar el nuevo mensaje al array de mensajes
+                                    conversation.messages.push(newMessage);
 
-                                    if (existingMessageIndex !== -1) {
-                                        // Si ya existe la conversación, actualizamos
-                                        messages[existingMessageIndex] =
-                                            newMessage;
-                                    } else {
-                                        // Si no existe, añadimos la nueva conversación
-                                        messages.unshift(newMessage);
-                                    }
-                                    // Ordenar las conversaciones por fecha de creación (más reciente primero)
-                                    // Ordenar las conversaciones por fecha de creación del último mensaje (más reciente primero)
-                                    messages.sort(
+                                    // Ordenar los mensajes por fecha de creación
+                                    conversation.messages.sort(
                                         (a, b) =>
                                             new Date(a.createdAt).getTime() -
                                             new Date(b.createdAt).getTime()

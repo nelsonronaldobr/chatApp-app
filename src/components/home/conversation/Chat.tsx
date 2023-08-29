@@ -48,11 +48,13 @@ const MessageContent: FC<{ message: Message; currentUser: User | null }> = ({
 
 export const Chat: FC<Props> = ({ conversation }) => {
     const { user } = useAuthStore();
-    const { lastMessage, participants } = conversation;
+    const { lastMessage } = conversation;
 
-    const otherUser = participants.find(
-        (participant) => participant._id !== user?._id
-    );
+    const otherUser =
+        lastMessage.sender._id !== user?._id
+            ? lastMessage.sender
+            : lastMessage.receiver;
+
     return (
         <Link to={`/conversations/${conversation._id}`}>
             <Button
